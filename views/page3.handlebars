@@ -1,18 +1,43 @@
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <!-- passed in variables in handlebars are surrounded by two curly braces like the following
        Any variable you pass into res.render will be available by name in the template through
        the curly braces
   -->
   <title>{{title}}</title>
 </head>
+
 <body>
   <h1>Welcome to page 3</h1>
-  
+
   <!-- links or URLs are always GET resources as they are getting (retrieving) a resource -->
   <a href="/">Home</a>
   <a href="/page1">Page 1</a>
   <a href="/page2">Page 2</a>
+  <a href="/page4">Page 4</a>
+
+  <form action="/createDog" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+    <label for="breed">Breed:</label>
+    <input type="text" id="breed" name="breed" required><br>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br>
+    <button type="submit">Create Dog</button>
+  </form>
+
+  <h1>Update Dog's Age</h1>
+  <form action="/updateDogAge" method="POST">
+    <label for="dogName">Dog's Name:</label>
+    <input type="text" id="dogName" name="dogName" required><br>
+    <button type="submit">Increase Age</button>
+  </form>
+
+  {{#if errorMessage}}
+  <p style="color: red;">{{errorMessage}}</p>
+  {{/if}}
 </body>
+
 </html>
